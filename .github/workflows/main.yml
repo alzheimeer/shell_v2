@@ -1,0 +1,19 @@
+name: C Continuous Integration
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: configure
+      run: git clone https://github.com/holbertonschool/Betty.git && cd ./Betty && sudo ./install.sh && cd ..
+    - name: betty check
+      run: betty */*.c */*.h
