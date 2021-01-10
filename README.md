@@ -105,7 +105,7 @@ enil dnoceS
 $
 $ cat -e << HOLBERTON
 > qwertyuiop
-> ls -l                          
+> ls -l
 > cat -e small_file
 > HOLBERTONnope
 > nopeHOLBERTON

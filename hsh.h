@@ -45,6 +45,8 @@
  * @filename: name of file to out redirection
  * @redirfilefd: fd of file to write redirection
  * @redirfilefd2: fd of file to read redirection
+ * @dup_stdin: copy stdin
+ * @dup_stdout: copy stdout
  */
 typedef struct passinfo
 {
@@ -63,12 +65,12 @@ typedef struct passinfo
 	char *filename;
 	int redirfilefd;
 	int redirfilefd2;
+	int dup_stdin;
+	int dup_stdout;
 } info_t;
 
 #define INFO_INIT                                                    \
-	{                                                                \
-		0, 0, -1, {0}, 0, 0, {0}, NULL, NULL, NULL, 0, 0, NULL, 0, 0 \
-	}
+	{0, 0, -1, {0}, 0, 0, {0}, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0, 0}
 
 
 int main(int ac, char **av);
@@ -106,6 +108,7 @@ char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void redireccion(info_t *info);
+void restore_in_out(info_t *info);
 
 /* PATH */
 void find_cmd(info_t *info);
