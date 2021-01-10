@@ -105,7 +105,6 @@ int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-int _getline(info_t *info, char **ptr, size_t *length);
 void redireccion(info_t *info);
 
 /* PATH */
