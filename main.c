@@ -37,6 +37,7 @@ int main(int ac, char **av)
 		identifydelim(info, line);
 		lines = cutting(line);
 		condition = checkone(info, lines, condition);
+		free(line);
 		free(lines);
 	}
 	return (EXIT_SUCCESS);
