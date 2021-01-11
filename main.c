@@ -12,6 +12,7 @@ int main(int ac, char **av)
 	info_t info[] = {INFO_INIT};
 	int condition = 1, flaqread = 0;
 
+	info->fname = av[0];
 	if (ac == 2)
 	{
 		info->readfd = open_file(info, av[1], 0);

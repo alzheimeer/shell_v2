@@ -2,17 +2,18 @@
 
 /**
  * _cd - explore function.
- * @args: The number of arguments for cd.
+ * @info: structur
+ * @tokens: The number of arguments for cd.
  * Return: 2.
  */
-int _cd(char **args)
+int _cd(info_t *info, char **tokens)
 {
-	if (args[1] == NULL)
+	if (tokens[1] == NULL)
 		chdir("/");
 	else
 	{
-		if (chdir(args[1]) != 0)
-			errors(args);
+		if (chdir(tokens[1]) != 0)
+			print_error(info, "can't cd to ");
 	}
 	return (2);
 }

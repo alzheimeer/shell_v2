@@ -24,6 +24,11 @@
 #define CMD_AND '2'
 #define SEMICOLON '3'
 #define CMD_PIPE '4'
+#define REOUTDOBLE '5'
+#define REOUT '6'
+#define REIN   '7'
+#define REINDOBLE  '8'
+#define COMMENT  '9'
 
 #define READ 0	/* index pipe extremo escritura */
 #define WRITE 1 /* index pipe extremo lectura */
@@ -47,6 +52,10 @@
  * @redirfilefd2: fd of file to read redirection
  * @dup_stdin: copy stdin
  * @dup_stdout: copy stdout
+ * @count: count errors
+ * @fname: name execute file
+ * @ident: identify flaq redirections
+ * @identcomment: flaq comments
  */
 typedef struct passinfo
 {
@@ -67,11 +76,15 @@ typedef struct passinfo
 	int redirfilefd2;
 	int dup_stdin;
 	int dup_stdout;
+	int count;
+	char *fname;
+	int ident;
+	int identcomment;
 } info_t;
 
 #define INFO_INIT                                                    \
-	{0, 0, -1, {0}, 0, 0, {0}, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0, 0}
-
+	{0, 0, -1, {0}, 0, 0, {0}, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0, \
+	0, 0, NULL, 0, 0}
 
 int main(int ac, char **av);
 void _eputs(char *str);
@@ -86,19 +99,19 @@ char *reading(void);
 char **cutting(char *line);
 char **cuttingspace(char *line);
 void executing(info_t *info);
-int comparing(char **tokens);
+int comparing(info_t *info, char **tokens);
 int checkone(info_t *info, char **lines, int condition);
 void identifydelim(info_t *info, char *line);
-
+void identifydelim2(info_t *info, char *line);
 /* Señales */
 void sigint_handler(int sigint);
 
 /* Built-in */
 void _env(char **commands);
-int _cd(char **args);
+int _cd(info_t *info, char **tokens);
 
 /* Errors  */
-void errors(char __attribute__((unused)) **tokens);
+void print_error(info_t *info, char *estr);
 
 /* Auxiliar Prototypes */
 int _putchar(char c);

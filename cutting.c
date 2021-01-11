@@ -19,7 +19,7 @@ char **cutting(char *line)
 		fprintf(stderr, "lsh: allocation error\n");
 		exit(EXIT_FAILURE);
 	}
-	slice = strtok(line, "&|#;");
+	slice = strtok(line, "&|;");
 	while (slice != NULL)
 	{
 		tokens[position] = slice;
@@ -35,7 +35,7 @@ char **cutting(char *line)
 				exit(EXIT_FAILURE);
 			}
 		}
-		slice = strtok(NULL, "&|#;");
+		slice = strtok(NULL, "&|;");
 	}
 	tokens[position] = NULL;
 	return (tokens);
@@ -59,7 +59,7 @@ char **cuttingspace(char *line)
 		fprintf(stderr, "lsh: allocation error\n");
 		exit(EXIT_FAILURE);
 	}
-	slice = strtok(line, " \t\n\r");
+	slice = strtok(line, " \t\n\r#<>");
 	while (slice != NULL)
 	{
 		tokens[position] = slice;
@@ -75,7 +75,7 @@ char **cuttingspace(char *line)
 				exit(EXIT_FAILURE);
 			}
 		}
-		slice = strtok(NULL, " \t\n\r");
+		slice = strtok(NULL, " \t\n\r#<>");
 	}
 	tokens[position] = NULL;
 	return (tokens);

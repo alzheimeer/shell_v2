@@ -1,10 +1,10 @@
-.Dd 12/1/20=              
+.Dd 12/1/20=
 .Dt Simple shell 2
 .Os Ubuntu
-.Sh NAME                 
+.Sh NAME
 .Nm "Simple shell"
 .Nd Custom implementation of shell.
-.Sh SYNOPSIS             
+.Sh SYNOPSIS
 .Nm
 
 .Nd It takes no arguments
@@ -73,7 +73,7 @@ This shell runs any executable file from the PATH environmental variable, becaus
 .It Pa /simple_shell/main.c
 It is main file with entry point
 .It Pa /simple_shell/shell.c
-It contains main function, or core of the shell 
+It contains main function, or core of the shell
 .El                      \" Ends the list
 .Sh SEE ALSO
 .Xr bash 1 ,
@@ -82,7 +82,7 @@ It contains main function, or core of the shell
 .Xr zsh 2 ,
 .Sh BUGS
 .Bl
-We are not handling &&, ||, ; and other special characters, we have some issues with setenv, cd 
+We are not handling &&, ||, ; and other special characters, we have some issues with setenv, cd
 .Sh AUTHORS
 .Ar Edgar Quintero
 

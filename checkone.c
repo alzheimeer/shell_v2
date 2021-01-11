@@ -15,9 +15,9 @@ int checkone(info_t *info, char **lines, int condition)
 	{}
 	for (j = 0; j < i; j++)
 	{
-		info->tokens = cuttingspace(lines[j]), redireccion(info);
-		condition = comparing(info->tokens), info->argv = info->tokens;
-		find_cmd(info);
+		identifydelim2(info, lines[j]),	info->tokens = cuttingspace(lines[j]);
+		condition = comparing(info, info->tokens), redireccion(info);
+		info->argv = info->tokens, find_cmd(info);
 		if (j >= 1 && info->flaqs[j - 1] == CMD_OR && condition == 1 && info->status)
 			executing(info);
 		if (j >= 1 && info->flaqs[j - 1] == CMD_AND && condition == 1 &&

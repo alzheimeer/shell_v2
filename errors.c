@@ -1,20 +1,12 @@
 #include "hsh.h"
-
 /**
- * errors - Handle errors function.
- * @tokens: The case error.
- * Return: None
+ * print_error - prints an error message
+ * @info: the parameter & return info struct
+ * @estr: string containing specified error type
+ * Return: none
  */
-void errors(char __attribute__((unused)) **tokens)
+void print_error(info_t *info, char *estr)
 {
-	if (tokens[0])
-	{
-		write(STDOUT_FILENO, "hsh", 3);
-		write(STDOUT_FILENO, ": ", 2);
-		write(STDOUT_FILENO, "1", 1);
-		write(STDOUT_FILENO, ": ", 2);
-		write(STDOUT_FILENO, ": ", 2);
-		write(STDOUT_FILENO, "not found", _strlen("not found"));
-		write(STDOUT_FILENO, "\n", _strlen("\n"));
-	}
+	info->count++;
+	printf("%s: %d: %s: %s", info->fname, info->count, info->argv[0], estr);
 }
