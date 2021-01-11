@@ -1,10 +1,10 @@
 #include "hsh.h"
 
 /**
- * restore_in_out - restores stdin/out after redirect
+ * restore_std_in_out - restores stdin/out after redirect
  * @info: the parameter struct
  */
-void restore_in_out(info_t *info)
+void restore_std_in_out(info_t *info)
 {
 	if (info->dup_stdin)
 	{
@@ -19,6 +19,9 @@ void restore_in_out(info_t *info)
 		info->dup_stdout = 0;
 	}
 	info->ident = 0, info->identcomment = 0;
+	info->read_inPipe = 0;
+	info->write_inPipe = 0;
+	info->condition = 1;
 }
 /**
  * free_info - frees info_t struct fields

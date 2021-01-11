@@ -13,11 +13,13 @@ int comparing(info_t *info, char **tokens)
 		return (1);
 	if (_strcmp(tokens[0], "exit") == 0)
 	{
-		exit(-1);
-		return (-1);
+		exit(1);
+		return (0);
 	}
-	if (_strcmp(tokens[0], "env") == 0)
-		_env(tokens);
+	if (_strcmp(tokens[0], "setenv") == 0)
+		return (_setenv(info, tokens));
+	if (_strcmp(tokens[0], "unsetenv") == 0)
+		return (_unsetenv(info, tokens));
 	if (_strcmp(tokens[0], "cd") == 0)
 		return (_cd(info, tokens));
 	return (1);

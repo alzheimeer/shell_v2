@@ -8,5 +8,11 @@
 void print_error(info_t *info, char *estr)
 {
 	info->count++;
-	printf("%s: %d: %s: %s", info->fname, info->count, info->argv[0], estr);
+	if (!info->argv[1])
+		printf("%s: %d: %s: %s\n"
+		, info->fname, info->count, info->argv[0], estr);
+	else
+		printf("%s: %d: %s: %s: %s\n"
+		, info->fname, info->count, info->argv[0],
+	    estr, info->argv[1]);
 }

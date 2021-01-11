@@ -28,3 +28,16 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	free(ptr);
 	return (p);
 }
+/**
+ * _strtoken - count tokens
+ * @tokens: tokens
+ * Return: number of tokens
+ */
+int _strtoken(char **tokens)
+{
+	int i;
+
+	for (i = 0; tokens[i]; i++)
+	{}
+	return (i);
+}

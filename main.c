@@ -10,7 +10,7 @@ int main(int ac, char **av)
 	char *line = NULL;
 	char **lines = NULL;
 	info_t info[] = {INFO_INIT};
-	int condition = 1, flaqread = 0;
+	int flaqread = 0;
 
 	info->fname = av[0];
 	if (ac == 2)
@@ -22,7 +22,7 @@ int main(int ac, char **av)
 			flaqread = 1;
 	}
 	signal(SIGINT, sigint_handler);
-	while (condition)
+	while (info->condition)
 	{
 		if (flaqread == 1)
 		{
@@ -37,8 +37,8 @@ int main(int ac, char **av)
 		}
 		identifydelim(info, line);
 		lines = cutting(line);
-		condition = checkone(info, lines, condition);
-		restore_in_out(info);
+		checkone(info, lines);
+		restore_std_in_out(info);
 		free(line);
 		free(lines);
 	}

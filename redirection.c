@@ -10,8 +10,7 @@ void redireccion(info_t *info)
 	int j;
 
 	info->dup_stdin = dup(STDIN_FILENO), info->dup_stdout = dup(STDOUT_FILENO);
-	for (j = 0; info->tokens[j]; j++)
-	{}
+	j = _strtoken(info->tokens);
 	if (info->ident == REOUTDOBLE || info->ident == REOUT || info->ident == REIN)
 	{
 		info->filename = info->tokens[j - 1];

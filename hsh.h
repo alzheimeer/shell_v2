@@ -56,6 +56,7 @@
  * @fname: name execute file
  * @ident: identify flaq redirections
  * @identcomment: flaq comments
+ * @condition: flaq stop shell
  */
 typedef struct passinfo
 {
@@ -80,11 +81,12 @@ typedef struct passinfo
 	char *fname;
 	int ident;
 	int identcomment;
+	int condition;
 } info_t;
 
 #define INFO_INIT                                                    \
 	{0, 0, -1, {0}, 0, 0, {0}, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0, \
-	0, 0, NULL, 0, 0}
+	0, 0, NULL, 0, 0, 1}
 
 int main(int ac, char **av);
 void _eputs(char *str);
@@ -100,14 +102,13 @@ char **cutting(char *line);
 char **cuttingspace(char *line);
 void executing(info_t *info);
 int comparing(info_t *info, char **tokens);
-int checkone(info_t *info, char **lines, int condition);
+void checkone(info_t *info, char **lines);
 void identifydelim(info_t *info, char *line);
 void identifydelim2(info_t *info, char *line);
 /* Señales */
 void sigint_handler(int sigint);
 
 /* Built-in */
-void _env(char **commands);
 int _cd(info_t *info, char **tokens);
 
 /* Errors  */
@@ -116,12 +117,13 @@ void print_error(info_t *info, char *estr);
 /* Auxiliar Prototypes */
 int _putchar(char c);
 int _strlen(char *s);
+int _strtoken(char **tokens);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void redireccion(info_t *info);
-void restore_in_out(info_t *info);
+void restore_std_in_out(info_t *info);
 
 /* PATH */
 void find_cmd(info_t *info);
@@ -132,5 +134,7 @@ char *dup_chars(char *pathstr, int start, int stop);
 
 /* Environ */
 extern char **environ;
+int _unsetenv(info_t *info, char **tokens);
+int _setenv(info_t *info, char **tokens);
 
 #endif
