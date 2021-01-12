@@ -1,0 +1,21 @@
+name: Betty linter
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: configure
+      run: git clone https://github.com/holbertonschool/Betty.git && cd ./Betty && sudo ./install.sh && cd ..
+    - name: betty style
+      run: betty-style *.c *.h
+    - name: betty doc
+      run: betty-doc *.c *.h
