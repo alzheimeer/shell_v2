@@ -202,6 +202,12 @@ backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tm
 $
 ```
 ## Authors
-[Edgar Quintero](fogniebla@hotmail.com)
+Edgar Quintero
 
-[Alejandro Mogollon Medina](alejandro.mogollon-medina@holbertonschool.com)
+[![GitHub](https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/alzheimeer)
+[![Tweeting](https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/Alzheimeer)
+
+Alejandro Medina
+
+[![GitHub](https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/mellab)
+[![Tweeting](https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/MentalAbduction)
