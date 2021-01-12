@@ -1,4 +1,4 @@
-# shell-v2
+# shell-v2 ![Betty linter](https://github.com/alzheimeer/shell_v2/workflows/Betty%20linter/badge.svg)
 Shell Version 2 - A re-creation of Colombian People.
 
 ## Download and Run Instructions
