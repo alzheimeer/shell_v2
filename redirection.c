@@ -35,6 +35,12 @@ void redireccion(info_t *info)
 	else if (info->ident == REIN)
 	{
 		info->redirfilefd2 = open(info->filename, O_RDWR);
-		dup2(info->redirfilefd2, STDIN_FILENO);
+		if (info->redirfilefd2 == -1)
+		{
+			fprintf(stderr, "cannot open %s: No such file\n", info->filename);
+			free_info(info, 1), exit(-1);
+		}
+		else
+			dup2(info->redirfilefd2, STDIN_FILENO);
 	}
 }
