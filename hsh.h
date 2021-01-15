@@ -57,6 +57,7 @@
  * @ident: identify flaq redirections
  * @identcomment: flaq comments
  * @condition: flaq stop shell
+ * @dup_stderr: save state STDERR
  */
 typedef struct passinfo
 {
@@ -82,11 +83,12 @@ typedef struct passinfo
 	int ident;
 	int identcomment;
 	int condition;
+	int dup_stderr;
 } info_t;
 
 #define INFO_INIT                                                    \
 	{0, 0, -1, {0}, 0, 0, {0}, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0, \
-	0, 0, NULL, 0, 0, 1}
+	0, 0, NULL, 0, 0, 1, 0}
 
 int main(int ac, char **av);
 void _eputs(char *str);

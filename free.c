@@ -12,6 +12,12 @@ void restore_std_in_out(info_t *info)
 		close(info->dup_stdin);
 		info->dup_stdin = 0;
 	}
+	if (info->dup_stderr)
+	{
+		dup2(info->dup_stderr, STDERR_FILENO);
+		close(info->dup_stderr);
+		info->dup_stderr = 0;
+	}
 	if (info->dup_stdout)
 	{
 		dup2(info->dup_stdout, STDOUT_FILENO);

@@ -1,1 +1,1 @@
-ls > mao.txt
+hbtn > /tmp/hbtn_checker_tmp_23888

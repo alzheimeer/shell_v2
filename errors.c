@@ -9,10 +9,10 @@ void print_error(info_t *info, char *estr)
 {
 	info->count++;
 	if (!info->argv[1])
-		printf("%s: %d: %s: %s\n"
+		fprintf(stderr,"%s: %d: %s: %s\n"
 		, info->fname, info->count, info->argv[0], estr);
 	else
-		printf("%s: %d: %s: %s: %s\n"
+		fprintf(stderr,"%s: %d: %s: %s: %s\n"
 		, info->fname, info->count, info->argv[0],
 	    estr, info->argv[1]);
 }

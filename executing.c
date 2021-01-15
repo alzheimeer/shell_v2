@@ -30,7 +30,7 @@ void executing(info_t *info)
 		}
 		if (execve(info->path, info->tokens, environ) == -1)
 		{
-			print_error(info, "not found\n");
+			print_error(info, "not found");
 		}
 	}
 	else
