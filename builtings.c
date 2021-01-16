@@ -7,11 +7,13 @@
  */
 int _cd(info_t *info, char **tokens)
 {
-	char *s, buffer[1024], buffer2[1024], *o, *pathstr, str[80];
-	int i;
+	char *s = NULL, buffer[1024] = {0}, buffer2[1024] = {0}, *o, *pathstr = NULL;
+	char str[80] = {0};
+	int i = 0;
 
 	o = getcwd(buffer, 1024);
-	if (tokens[1] == NULL)
+	if (info->tokens[1] == NULL)
+	{
 		for (i = 0; environ[i]; i++)
 			if (environ[i][0] == 'H' && environ[i][1] == 'O' && environ[i][2] == 'M')
 			{
@@ -19,7 +21,9 @@ int _cd(info_t *info, char **tokens)
 				pathstr = &pathstr[5];
 				chdir(pathstr);
 			}
-	else if (tokens[1][0] == '-')
+	}
+	else if (info->tokens[1][0] == '-')
+	{
 		for (i = 0; environ[i]; i++)
 			if (environ[i][0] == 'O' && environ[i][1] == 'L' && environ[i][2] == 'D')
 			{
@@ -29,21 +33,16 @@ int _cd(info_t *info, char **tokens)
 				s = getcwd(buffer, 1024);
 				printf("%s\n", s);
 			}
+	}
 	else
 		if (chdir(tokens[1]) != 0)
 			print_error(info, "can't cd to ");
 	s = getcwd(buffer2, 1024);
 	for (i = 0; environ[i]; i++)
 		if (environ[i][0] == 'P' && environ[i][1] == 'W' && environ[i][2] == 'D')
-		{
-			sprintf(str, "PWD=%s", s);
-			strcpy(environ[i], str);
-		}
+			sprintf(str, "PWD=%s", s),	strcpy(environ[i], str);
 	for (i = 0; environ[i]; i++)
 		if (environ[i][0] == 'O' && environ[i][1] == 'L' && environ[i][2] == 'D')
-		{
-			sprintf(str, "OLDPWD=%s", o);
-			strcpy(environ[i], str);
-		}
+			sprintf(str, "OLDPWD=%s", o), strcpy(environ[i], str);
 	return (2);
 }

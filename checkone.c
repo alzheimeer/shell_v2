@@ -43,7 +43,7 @@ void checkone(info_t *info, char **lines)
 					info->pipefd[READ] = 0, info->pipefd[WRITE] = 0;
 				}
 			}
-			else if (j == 0 && info->flaqs[j] != CMD_PIPE)
+			else if (j == 0 && info->flaqs[j] != CMD_PIPE && info->err_num != 9)
 				executing(info);
 		}
 		free(info->tokens);

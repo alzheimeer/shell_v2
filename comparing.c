@@ -21,6 +21,6 @@ int comparing(info_t *info, char **tokens)
 	if (_strcmp(tokens[0], "unsetenv") == 0)
 		return (_unsetenv(info, tokens));
 	if (_strcmp(tokens[0], "cd") == 0)
-		return (_cd(info, tokens));
+		return (_cd(info, info->tokens));
 	return (1);
 }
