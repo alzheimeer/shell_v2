@@ -34,13 +34,16 @@ void redireccion(info_t *info)
 	}
 	else if (info->ident == REIN)
 	{
-		info->redirfilefd2 = open(info->filename, O_RDWR);
+		info->redirfilefd2 = open_file(info, info->filename, 0);
 		if (info->redirfilefd2 == -1)
 		{
-			info->err_num = 9, info->count++;
-			fprintf(stderr, "%s: %d: cannot open %s: No such file\n"
-			, info->fname, info->count, info->filename);
-		}
+			info->count++;
+			if (errno == EACCES)
+				fprintf(stderr, "%s: %d: cannot %s: Permission denied\n"
+				, info->fname, info->count, info->filename);
+			else if (errno == ENOENT)
+				fprintf(stderr, "%s: %d: cannot open %s: No such file\n"
+				, info->fname, info->count, info->filename);	}
 		else
 			dup2(info->redirfilefd2, STDIN_FILENO);
 	}

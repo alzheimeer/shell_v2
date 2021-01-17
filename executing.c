@@ -31,6 +31,9 @@ void executing(info_t *info)
 		if (execve(info->path, info->tokens, environ) == -1)
 		{
 			print_error(info, "not found");
+			if (errno == EACCES)
+				exit(126);
+			exit(1);
 		}
 	}
 	else

@@ -17,7 +17,7 @@ int main(int ac, char **av)
 	{
 		info->readfd = open_file(info, av[1], 0);
 		if (info->readfd == -1)
-			free_info(info, 1), exit(info->err_num);
+			exit(info->err_num);
 		else
 			flaqread = 1;
 	}
